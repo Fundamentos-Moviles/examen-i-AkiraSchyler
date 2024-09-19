@@ -11,6 +11,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late List lista;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -20,7 +21,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery
+        .of(context)
+        .size;
     return Scaffold(
       body: Stack(
         children: [
@@ -28,65 +31,75 @@ class _HomeState extends State<Home> {
             padding: EdgeInsets.all(1),
             child:
             SingleChildScrollView(
-              child: Container(
-                color: con.fondo,
-                child: Column(
-                  children: [
-                    Container(
-                        padding: EdgeInsets.only(top:5.0, bottom: 5.0, left: 50, right: 50),
-                        margin: EdgeInsets.only( top: 10.0),
-                        decoration: BoxDecoration(      ///                                juntos, marcará un error por
-                          borderRadius: BorderRadius.circular(10),    ///                  incompatibilidad de atributos
-                          color: con.cuadro, /// ------------------------------------>
-                        ),
-                        child: Column(
-                          children: [
-                            Text(
-                              'Notificaciones de actividades',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: con.titulos,
-                                fontSize: 25.0,
-                                fontWeight: FontWeight.bold,
+                child: Container(
+                  color: con.fondo,
+                  child: Column(
+                    children: [
+                      Container(
+                          padding: EdgeInsets.only(
+                              top: 5.0, bottom: 5.0, left: 50, right: 50),
+                          margin: EdgeInsets.only(top: 10.0),
+                          decoration: BoxDecoration(
+
+                            ///                                juntos, marcará un error por
+                            borderRadius: BorderRadius.circular(10),
+
+                            ///                  incompatibilidad de atributos
+                            color: con.cuadro,
+
+                            /// ------------------------------------>
+                          ),
+                          child: Column(
+                            children: [
+                              Text(
+                                'Notificaciones de actividades',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: con.titulos,
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            Text(
-                              'Josemaria Guerrero Perea',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: con.titulos,
-                                fontSize: 10.0,
-                                fontWeight: FontWeight.bold,
+                              Text(
+                                'Josemaria Guerrero Perea',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: con.titulos,
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                          ],
-                        )
+                            ],
+                          )
 
-                    ),
-                    Container(
-                      height: size.height,
-                      width: size.width,
-                      padding: EdgeInsets.all(20.0),
-                      child: ListView.builder(
-                          padding: const EdgeInsets.all(8),
-                          itemCount: lista.length,
-                          itemBuilder: (BuildContext, int index){
-                            var datos = lista[index].toString().split('#');
-                            var datos2 = con.lista[index].toString().split('#');
-
-                            return datos[5] == '2' ?
-                            buildCard(datos[1], datos[2], datos[3], int.parse(datos[0]))
-                                :
-                            buildCard2(datos[1], datos[2], datos[3], int.parse(datos2[0]));
-
-
-                            //buildCard();
-                          }
                       ),
-                    ),
-                  ],
-                ),
-              )
+                      Container(
+                        height: size.height,
+                        width: size.width,
+                        padding: EdgeInsets.all(20.0),
+                        child: ListView.builder(
+                            padding: const EdgeInsets.all(8),
+                            itemCount: lista.length - 10,
+                            itemBuilder: (BuildContext, int index) {
+                              var datos = lista[index].toString().split('#');
+                              var datos2 = con.lista[index].toString().split(
+                                  '#');
+
+                              return datos[5] == '2' ?
+                              buildCard(datos[1], datos[2], datos[3],
+                                  int.parse(datos[0]))
+                                  :
+                              buildCard2(datos[1], datos[2], datos[3],
+                                  int.parse(datos2[0]));
+
+
+                              //buildCard();
+                            }
+                        ),
+                      ),
+                    ],
+                  ),
+                )
 
             ),
           )
@@ -95,7 +108,8 @@ class _HomeState extends State<Home> {
     );
   }
 
-  ElevatedButton buildCard2(String numero, String texto1, String texto2, int id) {
+  ElevatedButton buildCard2(String numero, String texto1, String texto2,
+      int id) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: con.cuadro,
@@ -103,12 +117,13 @@ class _HomeState extends State<Home> {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-        onPressed:(){
+        onPressed: () {
           setState(() {
             Navigator.push(context, MaterialPageRoute(
-                builder: (context) => MoreInfo()));//detectar y actualizar el estado de la VISTA
+                builder: (context) =>
+                    MoreInfo())); //detectar y actualizar el estado de la VISTA
           });
-          }, //funcion interna
+        }, //funcion interna
         child:
         Row(
           //mainAxisSize: MainAxisSize.max,
@@ -121,7 +136,7 @@ class _HomeState extends State<Home> {
                       Row(
                         children: [
                           Expanded(
-                            flex:10,
+                            flex: 10,
                             child: Text(
                               numero,
                               style: TextStyle(
@@ -138,7 +153,8 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                       Align(
-                        alignment: Alignment.centerLeft, // Alinea el texto a la derecha
+                        alignment: Alignment.centerLeft,
+                        // Alinea el texto a la derecha
                         child: Text(
                           texto1,
                           style: TextStyle(
@@ -160,14 +176,17 @@ class _HomeState extends State<Home> {
                       ),
                       Align(
                         alignment: Alignment.bottomRight,
-                        child: Icon(Icons.star, size: 15.0, color: con.estrella,),
+                        child: Icon(
+                          Icons.star, size: 15.0, color: con.estrella,),
                       ),
                     ],
                   ),
                 )
             ),
+            SizedBox(width: 10),
           ],
         )
+
     );
   }
 
@@ -180,16 +199,22 @@ class _HomeState extends State<Home> {
               child: Container(
                 padding: EdgeInsets.all(10.0),
                 margin: EdgeInsets.only(bottom: 10.0, top: 10.0,),
-                decoration: BoxDecoration(      ///                                juntos, marcará un error por
-                  borderRadius: BorderRadius.circular(10),    ///                  incompatibilidad de atributos
-                  color: con.cuadro, /// ------------------------------------>
+                decoration: BoxDecoration(
+
+                  ///                                juntos, marcará un error por
+                  borderRadius: BorderRadius.circular(10),
+
+                  ///                  incompatibilidad de atributos
+                  color: con.cuadro,
+
+                  /// ------------------------------------>
                 ),
                 child: Column(
                   children: [
                     Row(
                       children: [
                         Expanded(
-                          flex:10,
+                          flex: 10,
                           child: Text(
                             numero,
                             style: TextStyle(
@@ -206,7 +231,8 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                     Align(
-                      alignment: Alignment.centerLeft, // Alinea el texto a la derecha
+                      alignment: Alignment.centerLeft,
+                      // Alinea el texto a la derecha
                       child: Text(
                         texto1,
                         style: TextStyle(
@@ -239,17 +265,25 @@ class _HomeState extends State<Home> {
               child:
               Container(
                 margin: EdgeInsets.only(bottom: 10.0, left: 10.0, top: 10.0),
-                decoration: BoxDecoration(      ///                                juntos, marcará un error por
-                  borderRadius: BorderRadius.circular(10),    ///                  incompatibilidad de atributos
-                  color: con.cuadro, /// ------------------------------------>
+                decoration: BoxDecoration(
+
+                  ///                                juntos, marcará un error por
+                  borderRadius: BorderRadius.circular(10),
+
+                  ///                  incompatibilidad de atributos
+                  color: con.cuadro,
+
+                  /// ------------------------------------>
                 ),
                 child:
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center, // Centra los botones verticalmente
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  // Centra los botones verticalmente
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(bottom: 15.0, top: 20.0,left: 2, right: 2),
+                      margin: EdgeInsets.only(
+                          bottom: 15.0, top: 20.0, left: 2, right: 2),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: con.boton,
@@ -257,23 +291,28 @@ class _HomeState extends State<Home> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
-                          onPressed:(){
+                          onPressed: () {
                             setState(() {
                               Navigator.push(context, MaterialPageRoute(
-                                  builder: (context) => MoreInfo()));//detectar y actualizar el estado de la VISTA
+                                  builder: (context) =>
+                                      MoreInfo())); //detectar y actualizar el estado de la VISTA
                             });
-                            }, //funcion interna
+                          }, //funcion interna
                           child:
                           Row(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center, //ALINEADOR
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            //ALINEADOR
                             children: [
                               Icon(Icons.edit, color: con.cuadro,),
-                              Text('Ver mas', style: TextStyle(color: con.cuadro),),
+                              Text('Ver mas', style: TextStyle(
+                                  color: con.cuadro),),
                             ],
                           )
                       ),
-                    ), ///BOTONES CORREGIR
+                    ),
+
+                    ///BOTONES CORREGIR
                     Container(
                       margin: EdgeInsets.only(bottom: 15.0, left: 2, right: 2),
                       child: ElevatedButton(
@@ -283,23 +322,30 @@ class _HomeState extends State<Home> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
-                          onPressed:(){
+                          onPressed: () {
                             setState(() { //detectar y actualizar el estado de la VISTA
-                              if (id == 10 || id == 15 || id == 20 || id == 23) {
-                                showSnackBar('No se eliminó el elemento con el id: $id', 5);
+                              if (id == 10 || id == 15 || id == 20 ||
+                                  id == 23) {
+                                showSnackBar(
+                                    'No se eliminó el elemento con el id: $id',
+                                    5);
                               } else {
-                                lista.removeAt(id-1);
-                                showSnackBar('Se eliminó el elemento con el id: $id', 5);
+                                lista.removeAt(id - 1);
+                                //lista.add(1);
+                                showSnackBar(
+                                    'Se eliminó el elemento con el id: $id', 5);
                               }
                             });
-                            }, //funcion interna
+                          }, //funcion interna
                           child:
                           Row(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center, //ALINEADOR
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            //ALINEADOR
                             children: [
                               Icon(Icons.delete, color: con.cuadro,),
-                              Text('Borrar', style: TextStyle(color: con.cuadro),),
+                              Text('Borrar', style: TextStyle(
+                                  color: con.cuadro),),
                             ],
                           )
                       ),
@@ -315,7 +361,7 @@ class _HomeState extends State<Home> {
 
 
   void showSnackBar(String texto, int duracion) {
-    final  snackBar = SnackBar(
+    final snackBar = SnackBar(
       content: Text(texto),
       duration: Duration(seconds: duracion),
       action: SnackBarAction(
@@ -329,16 +375,7 @@ class _HomeState extends State<Home> {
     // Muestra el SnackBar usando ScaffoldMessenger
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
-  void validNumber(int id){
-    setState(() { //detectar y actualizar el estado de la VISTA
-      if (id == 10 || id == 15 || id == 20 || id == 23) {
-        showSnackBar('No se eliminó el elemento con el id: $id', 5);
-      } else {
-        lista.removeAt(id-1); // Elimina el elemento de la lista
-        showSnackBar('Se eliminó el elemento con el id: $id', 5);
-      }
-    });
-  }
 }
+
 
 

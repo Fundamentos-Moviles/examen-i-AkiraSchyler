@@ -10,8 +10,10 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final usuario = TextEditingController();//cambiando segun el estado de la vista, recomendado
+  final usuario = TextEditingController(); // Cambiando según el estado de la vista, recomendado
   TextEditingController pass = TextEditingController();
+  String errorMessage = ''; // Mensaje de error
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -24,129 +26,150 @@ class _LoginState extends State<Login> {
               height: size.height,
               width: size.width,
               color: con.fondo,
-              child:
-                  Column(
-                    children: [
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Expanded(child: Container(
-                              padding: EdgeInsets.all(15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: con.fondo2,
-                              ),
-                            )),
-                            Expanded(child: Container(
-                              padding: EdgeInsets.all(15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: con.fondo,
-                              ),
-                            )),
-                            Expanded(child: Container(
-                              padding: EdgeInsets.all(15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: con.fondo3,
-                              ),
-                            )),
-                            Expanded(child: Container(
-                              padding: EdgeInsets.all(15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: con.fondo4,
-                              ),
-                            )),
-                          ],
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(15.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: con.fondo2,
+                            ),
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Expanded(child: Container(
-                              padding: EdgeInsets.all(15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: con.fondo2,
-                              ),
-                            )),
-                            Expanded(child: Container(
-                              padding: EdgeInsets.all(15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: con.fondo,
-                              ),
-                            )),
-                            Expanded(child: Container(
-                              padding: EdgeInsets.all(15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: con.fondo3,
-                              ),
-                            )),
-                            Expanded(child: Container(
-                              padding: EdgeInsets.all(15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: con.fondo4,
-                              ),
-                            )),
-                          ],
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(15.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: con.fondo,
+                            ),
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Expanded(child: Container(
-                              padding: EdgeInsets.all(15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: con.fondo2,
-                              ),
-                            )),
-                            Expanded(child: Container(
-                              padding: EdgeInsets.all(15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: con.fondo,
-                              ),
-                            )),
-                            Expanded(child: Container(
-                              padding: EdgeInsets.all(15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: con.fondo3,
-                              ),
-                            )),
-                            Expanded(child: Container(
-                              padding: EdgeInsets.all(15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: con.fondo4,
-                              ),
-                            )),
-                          ],
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(15.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: con.fondo3,
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
-                  )
-            ,
-          )
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(15.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: con.fondo4,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(15.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: con.fondo2,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(15.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: con.fondo,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(15.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: con.fondo3,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(15.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: con.fondo4,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(15.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: con.fondo2,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(15.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: con.fondo,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(15.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: con.fondo3,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(15.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: con.fondo4,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           Center(
             child: Container(
-              height: size.height * .4,
+              height: size.height * .5,
               width: size.width * .8,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: con.cuadro.withOpacity(0.3),
               ),
-              child:
-              Column(
+              child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 10),
@@ -163,59 +186,65 @@ class _LoginState extends State<Login> {
                   TextFormField(
                     controller: usuario,
                     decoration: InputDecoration(
-                        hintText: 'Correo/Usuario', //texto de ayuda
-                        filled: true,
-                        fillColor: con.cuadro,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              width: 5,
-                              color: con.letras,
-                            )
-                        )
+                      hintText: 'Correo/Usuario',
+                      filled: true,
+                      fillColor: con.cuadro,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(
+                          width: 5,
+                          color: con.letras,
+                        ),
+                      ),
                     ),
-
                   ),
                   const SizedBox(height: 10),
                   TextFormField(
                     controller: pass,
                     decoration: InputDecoration(
-                        hintText: 'Contraseña', //texto de ayuda
-                        filled: true,
-                        fillColor: con.cuadro,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              width: 5,
-                              color: con.letras,
-                            )
-                        )
+                      hintText: 'Contraseña',
+                      filled: true,
+                      fillColor: con.cuadro,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(
+                          width: 5,
+                          color: con.letras,
+                        ),
+                      ),
                     ),
-
+                    obscureText: true, // Ocultar la contraseña
                   ),
                   const SizedBox(height: 10),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: con.botones,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        fixedSize: Size(200, 40),
+                  if (errorMessage.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        errorMessage,
+                        style: TextStyle(color: Colors.red, fontSize: 16),
                       ),
-                      onPressed:(){
-                        validUser();
-                      }, //funcion interna
-                      child:
-                          Text(
-                            'Iniciar Sesion',
-                            style: TextStyle(
-                              color: con.cuadro,
-                            ),
-                          ),
+                    ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: con.botones,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      fixedSize: Size(200, 40),
+                    ),
+                    onPressed: () {
+                      validUser();
+                    },
+                    child: Text(
+                      'Iniciar Sesion',
+                      style: TextStyle(
+                        color: con.cuadro,
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'Mi primer examen. estara sencillo?',
+                    'Mi primer examen. ¿estará sencillo?',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: con.cuadro,
@@ -225,28 +254,36 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
   }
-  void validUser(){
+
+  void validUser() {
     setState(() {
-      if(usuario.text == 'usuario' && pass.text == "1") {
-        print("usuario valido");
+      if (usuario.text.isEmpty || pass.text.isEmpty) {
+        errorMessage = 'Datos incompletos';
+      } else if (usuario.text != 'test' && pass.text != "FDM1") {
+        errorMessage = 'Usuario Y Contraseñá Incorrecto';
+      }else if(usuario.text != 'test'){
+        errorMessage = 'Usuario Incorrecto';
+      }else if(pass.text != "FDM1"){
+        errorMessage = 'Contraseña Incorrecta';
+      }else {
+        errorMessage = '';
+        print("Usuario válido");
         showSnackBar('Ingreso correctamente', 5);
-        Navigator.push(context, MaterialPageRoute(
-            builder: (context) => Home()));
-        ///pop quita
-        ///pushReplacment, push y pop
-      }else{
-        showSnackBar('Usuario Invalido', 5);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Home()),
+        );
       }
     });
   }
 
   void showSnackBar(String texto, int duracion) {
-    final  snackBar = SnackBar(
+    final snackBar = SnackBar(
       content: Text(texto),
       duration: Duration(seconds: duracion),
       action: SnackBarAction(
@@ -259,4 +296,3 @@ class _LoginState extends State<Login> {
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
-
